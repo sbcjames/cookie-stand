@@ -3,26 +3,44 @@
 var hoursOpenArray = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 var allStoreCities = [];
 
+var parentElement = document.getElementById('table');
+
+function generateHeader() {
+  var tableRow = document.createElement('tr');
+  var timeRow = document.createElement('td');
+  tableRow.appendChild(timeRow);
+  for (var i = 0; i < hoursOpenArray.length; i++) {
+    var timeHeader = document.createElement('th');
+    timeHeader.textContent = hoursOpenArray[i];
+    tableRow.appendChild(timeHeader);
+  }
+  var time = document.createElement('th');
+  time.textContent = 'location total';
+  tableRow.appendChild(time);
+  parentElement.appendChild(tableRow);
+}
+
 function StoreCities(location, minimumCustomers, maxCustomers, averageCookies) {
   this.cityLocation = location;
   this.mincust = minimumCustomers;
   this.maxcust = maxCustomers;
   this.aveCookies = averageCookies;
   this.salesCookieEachHour = [];
-  this.totalSales = 0;
+  this.result = 0;
   allStoreCities.push(this);
 }
 
 StoreCities.prototype.generateCookieSales = function() {
-  var result = 0;
+  this.result = 0;
   for(var i=0; i < hoursOpenArray.length; i++) {
     var createHourlySales = getRandomIntInclusive(this.mincust, this.maxcust) * this.aveCookies;
     createHourlySales = Math.ceil(createHourlySales);
-    result += createHourlySales;
+    this.result += createHourlySales;
     this.salesCookieEachHour.push(createHourlySales);
   }
-  this.totalSales = result;
+  this.totalSales = this.result;
 };
+generateHeader();
 
 StoreCities.prototype.renderTableList = function() {
   var parentElement = document.getElementById('table');
@@ -37,6 +55,11 @@ StoreCities.prototype.renderTableList = function() {
     tableInput.textContent = this.salesCookieEachHour[i];
     tableRow.appendChild(tableInput);
   }
+
+  var totalDaySales = document.createElement('td');
+  totalDaySales.textContent = this.result;
+  tableRow.appendChild(totalDaySales);
+
   parentElement.appendChild(tableInput);
 };
 
