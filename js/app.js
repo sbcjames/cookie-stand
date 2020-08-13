@@ -2,7 +2,6 @@
 
 var hoursOpenArray = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 var allStoreCities = [];
-
 var parentElement = document.getElementById('table');
 
 function generateHeader() {
@@ -20,11 +19,11 @@ function generateHeader() {
   parentElement.appendChild(tableRow);
 }
 
-function StoreCities(location, minimumCustomers, maxCustomers, averageCookies) {
-  this.cityLocation = location;
-  this.mincust = minimumCustomers;
-  this.maxcust = maxCustomers;
-  this.aveCookies = averageCookies;
+function StoreCities(location, minCustomers, maxCustomers, averageCookies) {
+  this.location = location;
+  this.minCustomers = minCustomers;
+  this.maxCustomers = maxCustomers;
+  this.averageCookies = averageCookies;
   this.salesCookieEachHour = [];
   this.result = 0;
   allStoreCities.push(this);
@@ -33,7 +32,7 @@ function StoreCities(location, minimumCustomers, maxCustomers, averageCookies) {
 StoreCities.prototype.generateCookieSales = function() {
   this.result = 0;
   for(var i=0; i < hoursOpenArray.length; i++) {
-    var createHourlySales = getRandomIntInclusive(this.mincust, this.maxcust) * this.aveCookies;
+    var createHourlySales = getRandomIntInclusive(this.minCustomers, this.maxCustomers) * this.averageCookies;
     createHourlySales = Math.ceil(createHourlySales);
     this.result += createHourlySales;
     this.salesCookieEachHour.push(createHourlySales);
@@ -46,7 +45,7 @@ StoreCities.prototype.renderTableList = function() {
   var parentElement = document.getElementById('table');
   var tableRow = document.createElement('tr');
   var storeNames = document.createElement('th');
-  storeNames.textContent = this.cityLocation;
+  storeNames.textContent = this.location;
   tableRow.appendChild(storeNames);
   parentElement.appendChild(tableRow);
 
@@ -89,3 +88,33 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+var form = document.getElementById('form');
+form.addEventListener('submit', newStoreForm);
+function newStoreForm(event) {
+  event.preventDefault();
+
+  var location = event.target.location.value;
+  var minCustomers = event.target.minCustomers.value;
+  var maxCustomers = event.target.maxCustomers.value;
+  var averageCookies = event.target.averageCookies.value;
+
+  new StoreCities(location, minCustomers, maxCustomers, averageCookies);
+  location.generateCookieSales();
+  location.renderTableList();
+}
+
+
+
+
+// form.addEventListener('submit', function(event) {
+//   event.preventDefault();
+//   var location = event.target.location.value;
+//   var minCustomers = event.target.minCustomers.value;
+//   var maxCustomers = event.target.maxCustomers.value;
+//   var averageCookies = event.target.averageCookies.value;
+//   var location = new StoreCities(location, minCustomers, maxCustomers, averageCookies);
+//   location.salesCookieEachHour();
+//   location.renderTableList();
+// });
+
