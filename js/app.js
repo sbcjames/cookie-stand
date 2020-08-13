@@ -62,6 +62,11 @@ StoreCities.prototype.renderTableList = function() {
   parentElement.appendChild(tableInput);
 };
 
+// function renderFooter() {
+//   var footerRow = document.createElement('tr');
+
+// }
+
 var seattle = new StoreCities('Seattle', 23, 65, 6.3);
 seattle.generateCookieSales();
 seattle.renderTableList();
@@ -92,15 +97,17 @@ function getRandomIntInclusive(min, max) {
 var form = document.getElementById('form');
 form.addEventListener('submit', newStoreForm);
 function newStoreForm(event) {
+  var remove = document.getElementById('table').lastElementChild;
+  parentElement.removeChild(remove);
   event.preventDefault();
 
   var location = event.target.location.value;
   var minCustomers = event.target.minCustomers.value;
   var maxCustomers = event.target.maxCustomers.value;
   var averageCookies = event.target.averageCookies.value;
-
-  new StoreCities(location, minCustomers, maxCustomers, averageCookies);
-  location.generateCookieSales();
+  console.log(location, minCustomers, maxCustomers, averageCookies);
+  new StoreCities(location, +minCustomers, +maxCustomers, +averageCookies);
+  // location.generateCookieSales();
   location.renderTableList();
 }
 

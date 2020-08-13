@@ -38,4 +38,15 @@ footer {
 li {
   padding-bottom: 15px;
   color: rgb(15, 60, 4);
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 50%;
+  display: inline-block;
+  margin: 5px;
+  outline: solid black .5px;
+  padding: 2px;
+}
+li:first-child {
+  color: rgb(15, 37, 9);
+  font-style: italic;
 }
