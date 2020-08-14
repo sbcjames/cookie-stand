@@ -59,7 +59,7 @@ StoreCities.prototype.renderTableList = function() {
   totalDaySales.textContent = this.result;
   tableRow.appendChild(totalDaySales);
 
-  parentElement.appendChild(tableInput);
+  parentElement.appendChild(tableRow);
 };
 
 // function renderFooter() {
@@ -97,17 +97,14 @@ function getRandomIntInclusive(min, max) {
 var form = document.getElementById('form');
 form.addEventListener('submit', newStoreForm);
 function newStoreForm(event) {
-  var remove = document.getElementById('table').lastElementChild;
-  parentElement.removeChild(remove);
   event.preventDefault();
 
   var location = event.target.location.value;
   var minCustomers = event.target.minCustomers.value;
   var maxCustomers = event.target.maxCustomers.value;
   var averageCookies = event.target.averageCookies.value;
-  console.log(location, minCustomers, maxCustomers, averageCookies);
   new StoreCities(location, +minCustomers, +maxCustomers, +averageCookies);
-  // location.generateCookieSales();
+  location.generateCookieSales();
   location.renderTableList();
 }
 
