@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(67, 158, 67);
+}
+
+table{
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+th {
+  background-color: rgb(15, 60, 4);
+  color: rgb(36, 215, 228);
+  border: 2px solid black;
+  padding: 15px;
+  margin: 15px;
+}
+td {
+  background-color: rgb(155, 228, 173);
+  color: rgb(27, 16, 16);
+  border: 2px solid black;
+  padding: 15px;
+  margin: 15px;
+}
+form {
+  font-size: 20px;
+  color:  rgb(27, 16, 16)
+}

@@ -3,22 +3,32 @@
   <head>
     <title>Salmon Cookies Sales</title>
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style2.css" />
   </head>
   <body>
     <header><h1>Sales Forcasting for Cookies</h1></header>
     <main>
-      <ul id="Seattle">Seattle Cookie sales</ul>
-
-      <ul id="Tokyo">Tokyo Cookie sales</ul>
-      <ul id="Dubai">Dubai Cookie sales</ul>
-      <ul id="Paris">Paris Cookie sales</ul>
-      <ul id="Lima">Lima Cookie sales</ul>
+      <table>
+        <tbody id="table"></tbody>
+      </table>
+      <h2>Add New Store Here</h2>
+      <form id='form'>
+        <fieldset>
+          <label>Name of New Store</label>
+          <input id="location" type="text" />
+          <label>Minimum Expected Customers per hour</label>
+          <input id="minCustomers" type="number" />
+          <label>Maximum Expected Customers per Hour</label>
+          <input id="maxCustomers" type="number" />
+          <label>Average Amount of Cookies Expected to be Purchased by Each Customer</label>
+          <input id="averageCookies" type="number" />
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+        <a href="index.html">Return To Home</a>
     </main>
     <footer></footer>
-    <table>
-      <tbody id="table"></tbody>
-    </table>
+    
     <script src="js/app.js"></script>
   </body>
 </html>

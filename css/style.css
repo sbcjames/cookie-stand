@@ -1,0 +1,52 @@
+* {
+  background-color: rgb(67, 158, 67);
+  font-family: system;
+  font-size: larger;
+}
+#salmon {
+  display: inline;
+  width: 40%;
+  padding: 20px;
+}
+#chinook {
+  display: inline;
+  width: 40%;
+  padding: 20px;
+}
+header {
+  font-size: 50px;
+}
+h1 {
+  font-size: 50px;
+  text-align: center;
+  color: rgb(15, 60, 4);
+  padding: 15px;
+
+}
+div {
+  text-align: center;
+  color:  rgb(15, 60, 4)
+}
+p {
+  margin: 20px;
+	padding: 5px;
+}
+footer {
+  text-align: center;
+  color:  rgb(15, 60, 4)
+}
+li {
+  padding-bottom: 15px;
+  color: rgb(15, 60, 4);
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 50%;
+  display: inline-block;
+  margin: 5px;
+  outline: solid black .5px;
+  padding: 2px;
+}
+li:first-child {
+  color: rgb(15, 37, 9);
+  font-style: italic;
+}
