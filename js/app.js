@@ -3,6 +3,7 @@
 var hoursOpenArray = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 var allStoreCities = [];
 var parentElement = document.getElementById('table');
+var form = document.getElementById('form');
 
 function generateHeader() {
   var tableRow = document.createElement('tr');
@@ -94,18 +95,18 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var form = document.getElementById('form');
 form.addEventListener('submit', newStoreForm);
 function newStoreForm(event) {
   event.preventDefault();
 
   var location = event.target.location.value;
-  var minCustomers = event.target.minCustomers.value;
-  var maxCustomers = event.target.maxCustomers.value;
-  var averageCookies = event.target.averageCookies.value;
-  new StoreCities(location, +minCustomers, +maxCustomers, +averageCookies);
-  location.generateCookieSales();
-  location.renderTableList();
+  var minCustomers = Number(event.target.minCustomers.value);
+  var maxCustomers = Number(event.target.maxCustomers.value);
+  var averageCookies = Number(event.target.averageCookies.value);
+  var newStore = new StoreCities(location, +minCustomers, +maxCustomers, +averageCookies);
+
+  newStore.generateCookieSales();
+  newStore.renderTableList();
 }
 
 
